@@ -92,6 +92,52 @@
     margin-bottom: 2px;
 }
 
+.maps-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 22px;
+    padding: 20px;
+    margin: 20px 6%;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(45, 90, 39, 0.1);
+}
+
+.maps-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.maps-header i {
+    color: var(--accent);
+    font-size: 18px;
+}
+
+.maps-header span {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--primary);
+}
+
+.maps-frame {
+    width: 100%;
+    height: 180px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #eee;
+}
+.maps-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(0.2) contrast(1.1); /* Memberikan kesan estetik */
+    transition: filter 0.3s;
+}
+.maps-frame iframe:hover {
+    filter: grayscale(0);
+}
+
+
         /* SLIDER & SLIDER TAGS */
         .promo-slider { margin: 15px 6% 25px; overflow: hidden; border-radius: 18px; box-shadow: var(--card-shadow); position: relative; background: #eee; }
         .slides { display: flex; transition: transform 0.6s ease-in-out; }
@@ -212,42 +258,44 @@
     <div id="loading-text" style="text-align: center; padding: 40px; color: #888;"><b><i class="fas fa-spinner fa-spin"></i> Meracik Menu...</b></div>
     <div class="menu-grid" id="menu-list"></div>
 
-    <footer>
-        <p style="font-style: italic; font-size: 12px; color: #222; margin-bottom: 15px; font-weight: 700;">"Kebahagiaan sederhana dari suapan pertama."</p>
-        <div style="display: flex; justify-content: center;">
-            <a href="#" class="social-link" style="background: linear-gradient(45deg, #f09433, #bc1888);"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link" style="background: #1877F2;"><i class="fab fa-facebook-f"></i></a>
-        </div>
-        <p style="margin-top: 15px; font-size: 10px; color: #555;">&copy; 2026 RM. Berkat.</p>
-       <div class="disclaimer-container">
-    <i class="fas fa-clipboard-check"></i>
-    <div style="text-align: left; display: inline-block; width: 100%;">
-        <p style="font-weight: 800; color: var(--accent); margin-bottom: 8px; text-align: center;"> ⚠️ INFORMASI PENTING</p>
-        <p>• Harga menu dapat berubah mengikuti harga bahan baku.</p>
-        <p>• Foto produk adalah ilustrasi, sajian asli dapat sedikit berbeda.</p>
-        <p>• Stok menu diperbarui secara berkala di Google Sheets.</p>
-        <p>• Pesanan diproses setelah konfirmasi admin melalui WhatsApp.</p>
+<section class="maps-card">
+    <div class="maps-header">
+        <i class="fas fa-location-dot"></i>
+        <span>Lokasi RM. Berkat</span>
     </div>
-</div>
-
-    </footer>
-
-    <div class="cart-bar" id="cart-bar">
-        <div id="discount-notice" class="discount-notice notice-off"></div>
-        <input type="text" id="order-note" class="note-input" placeholder="Catatan (Contoh: Nama,Alamat,Request)">
-        <select class="shipping-select" id="shipping-method" onchange="updateCartUI()">
-            <option value="0">Ambil Sendiri / Dine In (Gratis)</option>
-            <option value="0">Antar Dekat < 5km (Gratis!)</option>
-            <option value="10000">Antar Jauh < 10km (+Rp 10rb)</option>
-        </select>
-        <div class="cart-footer">
-            <div>
-                <div id="cart-count" style="font-size: 11px; color: #888;">0 Pesanan</div>
-                <div id="cart-total" style="font-size: 18px; font-weight: 800; color: var(--primary);">Rp 0</div>
-            </div>
-            <button class="checkout-btn" onclick="checkoutWA()">Pesan Sekarang</button>
-        </div>
+    <p style="font-size: 11px; color: #666; margin-bottom: 12px; line-height: 1.4;">
+        Jl. Raya Utama No. 88, Kota Anda (Samping Bank ABC)
+    </p>
+    <div class="maps-frame">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56347862248!2d107.57311640000001!3d-6.9034443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTQnMTIuNCJTIDEwN8KwMzQnMjMuMiJF!5e0!3m2!1sid!2sid!4v1625000000000!5m2!1sid!2sid" 
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
     </div>
+    <a href="https://maps.google.com" target="_blank" style="display: block; text-align: center; margin-top: 15px; font-size: 12px; color: var(--accent); font-weight: 700; text-decoration: none;">
+        <i class="fas fa-directions"></i> Petunjuk Arah ke Lokasi
+    </a>
+</section>
+
+<footer>
+    <p style="font-style: italic; font-size: 12px; color: #222; margin-bottom: 15px; font-weight: 700;">
+        "Kebahagiaan sederhana dari suapan pertama."
+    </p>
+    
+    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+        <a href="#" class="social-link" style="background: linear-gradient(45deg, #f09433, #bc1888);"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link" style="background: #1877F2;"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
+    <div class="disclaimer-container">
+        <i class="fas fa-clipboard-check"></i>
+        <p>•Kami menjamin kebersihan & kehalalan setiap sajian.</p>
+        <p>•Pastikan alamat pengiriman sesuai agar kurir tidak nyasar.</p>
+    </div>
+
+    <p style="margin-top: 20px; font-size: 10px; color: #555;">&copy; 2026 RM. Berkat.</p>
+</footer>
+   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 <script>
     const CONFIG = {
@@ -280,6 +328,19 @@
             });
         } catch (e) { document.getElementById('loading-text').innerText = "Gagal memuat data!"; }
     }
+
+// Tambahkan ini di dalam fungsi filterMenu kamu
+function filterMenu(c, b) {
+    currentFilter = c;
+    document.getElementById('menuSearch').value = "";
+    document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    render(c);
+    
+    // Auto-scroll ke daftar menu agar pelanggan langsung melihat hasilnya
+    document.getElementById('menu-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 
     function searchMenu() {
         const query = document.getElementById('menuSearch').value.toLowerCase();

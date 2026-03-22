@@ -67,7 +67,6 @@
         .maps-frame iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.2) contrast(1.1); transition: filter 0.3s; }
         .maps-frame iframe:hover { filter: grayscale(0); }
 
-        /* SLIDER & SLIDER TAGS */
         .promo-slider { margin: 15px 6% 25px; overflow: hidden; border-radius: 18px; box-shadow: var(--card-shadow); position: relative; background: #eee; }
         .slides { display: flex; transition: transform 0.6s ease-in-out; }
         .slide { position: relative; min-width: 100%; }
@@ -115,15 +114,60 @@
         .notice-off { background: #f1f3f5; color: #888; }
         .notice-on { background: #fce4ec; color: var(--discount-color); animation: pulse 2s infinite; }
         
+        .clear-btn { background: #ffebee; color: var(--danger); border: none; width: 35px; height: 35px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: 0.2s; }
+        .clear-btn:active { transform: scale(0.9); background: #ffcdd2; }
+
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
         .shipping-select { background: #f1f3f5; border: 1.5px solid #e9ecef; color: #444; padding: 10px; border-radius: 12px; font-size: 13px; font-weight: 600; width: 100%; outline: none; }
         .cart-footer { display: flex; justify-content: space-between; align-items: center; }
         .checkout-btn { background: var(--primary); color: white; padding: 12px 22px; border-radius: 12px; border: none; font-weight: 800; font-size: 13px; cursor: pointer; }
 
-        .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
-        .lightbox img { max-width: 90%; max-height: 80%; border-radius: 15px; }
-        .lightbox.active { display: flex; }
+        /* --- STYLING UNTUK CUSTOM MODAL & LIGHTBOX --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.55); backdrop-filter: blur(5px);
+            display: none; align-items: center; justify-content: center;
+            z-index: 3000; opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.show { opacity: 1; }
+        
+        /* Box Confirm */
+        .modal-box {
+            background: white; width: 85%; max-width: 320px;
+            border-radius: 24px; padding: 25px 20px; text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            transform: translateY(20px) scale(0.95); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .modal-overlay.show .modal-box { transform: translateY(0) scale(1); }
+        
+        .modal-icon { width: 60px; height: 60px; background: #ffebee; color: var(--danger); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 15px; }
+        .modal-title { font-size: 18px; font-weight: 800; color: #333; margin-bottom: 8px; }
+        .modal-text { font-size: 12px; color: #666; margin-bottom: 22px; line-height: 1.5; font-weight: 500;}
+        
+        .modal-actions { display: flex; gap: 10px; }
+        .btn-cancel-modal { flex: 1; padding: 12px; border-radius: 14px; border: none; background: #f1f3f5; color: #555; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s; }
+        .btn-confirm-modal { flex: 1; padding: 12px; border-radius: 14px; border: none; background: var(--danger); color: white; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 6px 15px rgba(230, 57, 70, 0.3); transition: 0.2s; }
+        .btn-cancel-modal:active, .btn-confirm-modal:active { transform: scale(0.95); }
+
+        /* Box Image Lightbox */
+        .lightbox-content {
+            position: relative; max-width: 85%; max-height: 80%;
+            transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .modal-overlay.show .lightbox-content { transform: scale(1); }
+        .lightbox-content img {
+            width: 100%; height: 100%; object-fit: contain;
+            border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            display: block;
+        }
+        .lightbox-close {
+            position: absolute; top: -15px; right: -15px;
+            width: 36px; height: 36px; background: white; color: var(--danger);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 20px; font-weight: bold; cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid #eee; z-index: 10;
+        }
 
         footer { padding: 30px 6% 40px; text-align: center; }
         .social-link { text-decoration: none; width: 42px; height: 42px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; color: white; margin: 0 8px; font-size: 18px; }
@@ -133,7 +177,13 @@
 </head>
 <body>
 
-    <div class="lightbox" id="lightbox" onclick="this.classList.remove('active')"><img id="lightbox-img" src=""></div>
+    <div class="modal-overlay" id="imageLightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
+            <img id="lightbox-img" src="">
+        </div>
+    </div>
+
     <div class="datetime-container" id="real-datetime">Memuat...</div>
     
     <nav class="navbar">
@@ -226,16 +276,33 @@
         </select>
 
         <div class="cart-footer">
-            <div>
-                <div style="font-size: 11px; color: #777;">Total (<span id="cart-count">0 Item</span>)</div>
-                <div id="cart-total" style="font-size: 16px; font-weight: 800; color: var(--primary);">Rp 0</div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <button onclick="showConfirmModal()" class="clear-btn" title="Batalkan Pesanan">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+                <div>
+                    <div style="font-size: 11px; color: #777;">Total (<span id="cart-count">0 Item</span>)</div>
+                    <div id="cart-total" style="font-size: 16px; font-weight: 800; color: var(--primary);">Rp 0</div>
+                </div>
             </div>
             <button class="checkout-btn" onclick="checkoutWA()">
                 Pesan <i class="fab fa-whatsapp"></i>
             </button>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-box">
+            <div class="modal-icon"><i class="fas fa-trash-alt"></i></div>
+            <h3 class="modal-title">Batalkan Pesanan?</h3>
+            <p class="modal-text">Semua menu yang sudah kamu pilih akan dihapus dari keranjang.</p>
+            <div class="modal-actions">
+                <button class="btn-cancel-modal" onclick="closeConfirmModal()">Kembali</button>
+                <button class="btn-confirm-modal" onclick="executeClearCart()">Ya, Hapus</button>
+            </div>
+        </div>
+    </div>
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 <script>
     const CONFIG = {
         CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbLqSQeuUD-xQYsnKSXFW9ugrLXpemBzEQxeH5i65UdIweywO8CY0xEESs6bp4ZCJKO9v0KK3q4LWC/pub?output=csv", 
@@ -275,7 +342,6 @@
         if(b) b.classList.add('active');
         render(c);
         
-        // Auto-scroll ke daftar menu agar pelanggan langsung melihat hasilnya
         document.getElementById('menu-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
@@ -284,7 +350,6 @@
         if (query.trim() !== "") {
             currentFilter = 'semua';
             document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
-            // document.getElementById('btn-semua').classList.add('active'); // Dihapus karena btn-semua tidak ada di HTML
             render('semua', query);
         } else { filterMenu('promo', document.getElementById('btn-promo')); }
     }
@@ -352,6 +417,42 @@
         document.getElementById('cart-total').innerText = formatRp(totalFinal);
     }
 
+    // --- FUNGSI MODAL CONFIRM DELETE ---
+    function showConfirmModal() {
+        const modal = document.getElementById('confirmModal');
+        modal.style.display = 'flex';
+        setTimeout(() => { modal.classList.add('show'); }, 10);
+    }
+
+    function closeConfirmModal() {
+        const modal = document.getElementById('confirmModal');
+        modal.classList.remove('show');
+        setTimeout(() => { modal.style.display = 'none'; }, 300);
+    }
+
+    function executeClearCart() {
+        cart = []; 
+        document.getElementById('order-note').value = ""; 
+        document.getElementById('shipping-method').value = "0"; 
+        updateCartUI(); 
+        render(currentFilter, document.getElementById('menuSearch').value.toLowerCase()); 
+        closeConfirmModal(); 
+    }
+
+    // --- FUNGSI MODAL LIGHTBOX IMAGE ---
+    function zoomImg(srcUrl) {
+        const lb = document.getElementById('imageLightbox');
+        document.getElementById('lightbox-img').src = srcUrl;
+        lb.style.display = 'flex';
+        setTimeout(() => { lb.classList.add('show'); }, 10);
+    }
+
+    function closeLightbox() {
+        const lb = document.getElementById('imageLightbox');
+        lb.classList.remove('show');
+        setTimeout(() => { lb.style.display = 'none'; }, 300);
+    }
+
     function checkoutWA() {
         const shipSelect = document.getElementById('shipping-method');
         const shipVal = parseInt(shipSelect.value) || 0;
@@ -390,10 +491,8 @@
         }, 5000);
     }
 
-    function zoomImg(s) { document.getElementById('lightbox-img').src = s; document.getElementById('lightbox').classList.add('active'); }
     setInterval(() => { document.getElementById('real-datetime').innerText = new Date().toLocaleString('id-ID'); }, 1000);
     
-    // Inisiasi pengambilan data
     fetchData();
 </script>
 </body>

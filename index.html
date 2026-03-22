@@ -53,90 +53,19 @@
         .search-container { position: relative; background: white; border-radius: 15px; display: flex; align-items: center; padding: 0 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border: 1.5px solid rgba(45, 90, 39, 0.1); }
         .search-input { width: 100%; border: none; padding: 12px 10px; outline: none; font-size: 14px; font-weight: 500; background: transparent; }
 
-.disclaimer-box {
-    margin: 20px 6% 10px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.7);
-    border-left: 4px solid var(--accent);
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-}
+        .disclaimer-box { margin: 20px 6% 10px; padding: 15px; background: rgba(255, 255, 255, 0.7); border-left: 4px solid var(--accent); border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+        .disclaimer-container { margin: 30px 6% 10px; padding: 16px; background: rgba(255, 255, 255, 0.6); border-radius: 18px; border: 1px dashed var(--primary); text-align: center; }
+        .disclaimer-container i { color: var(--accent); font-size: 18px; margin-bottom: 8px; }
+        .disclaimer-container p { font-size: 11px; color: #444; line-height: 1.8; font-weight: 500; margin-bottom: 2px; }
 
-.disclaimer-container {
-    margin: 30px 6% 10px;
-    padding: 16px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 18px;
-    border: 1px dashed var(--primary);
-    text-align: center;
-}
+        .maps-card { background: rgba(255, 255, 255, 0.9) !important; border-radius: 22px; padding: 20px; margin: 20px 6%; box-shadow: var(--card-shadow); border: 1px solid rgba(45, 90, 39, 0.1); }
+        .maps-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .maps-header i { color: var(--accent); font-size: 18px; }
+        .maps-header span { font-weight: 700; font-size: 14px; color: var(--primary); }
 
-.disclaimer-container i {
-    color: var(--accent);
-    font-size: 18px;
-    margin-bottom: 8px;
-}
-
-.disclaimer-container p {
-    font-size: 11px;
-    color: #555;
-    line-height: 1.6;
-    font-weight: 500;
-}
-
-.disclaimer-container p {
-    font-size: 11px;
-    color: #444;
-    line-height: 1.8; /* Memberikan jarak antar baris */
-    font-weight: 500;
-    margin-bottom: 2px;
-}
-
-.maps-card {
-    background: rgba(255, 255, 255, 0.9) !important;
-    border-radius: 22px;
-    padding: 20px;
-    margin: 20px 6%;
-    box-shadow: var(--card-shadow);
-    border: 1px solid rgba(45, 90, 39, 0.1);
-}
-
-.maps-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-.maps-header i {
-    color: var(--accent);
-    font-size: 18px;
-}
-
-.maps-header span {
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--primary);
-}
-
-.maps-frame {
-    width: 100%;
-    height: 180px;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 2px solid #eee;
-}
-.maps-frame iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    filter: grayscale(0.2) contrast(1.1); /* Memberikan kesan estetik */
-    transition: filter 0.3s;
-}
-.maps-frame iframe:hover {
-    filter: grayscale(0);
-}
-
+        .maps-frame { width: 100%; height: 180px; border-radius: 15px; overflow: hidden; border: 2px solid #eee; }
+        .maps-frame iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.2) contrast(1.1); transition: filter 0.3s; }
+        .maps-frame iframe:hover { filter: grayscale(0); }
 
         /* SLIDER & SLIDER TAGS */
         .promo-slider { margin: 15px 6% 25px; overflow: hidden; border-radius: 18px; box-shadow: var(--card-shadow); position: relative; background: #eee; }
@@ -144,12 +73,7 @@
         .slide { position: relative; min-width: 100%; }
         .slide img { width: 100%; height: 180px; object-fit: cover; display: block; }
         
-        .promo-tag-slider { 
-            position: absolute; top: 15px; right: 15px; background: var(--accent); color: white; 
-            padding: 5px 15px; border-radius: 50px; font-size: 11px; font-weight: 800; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 10; text-transform: uppercase; 
-            border: 2px solid white; animation: pulse 2s infinite;
-        }
+        .promo-tag-slider { position: absolute; top: 15px; right: 15px; background: var(--accent); color: white; padding: 5px 15px; border-radius: 50px; font-size: 11px; font-weight: 800; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 10; text-transform: uppercase; border: 2px solid white; animation: pulse 2s infinite; }
 
         .slide-dots { position: absolute; bottom: 10px; width: 100%; display: flex; justify-content: center; gap: 6px; }
         .dot { width: 7px; height: 7px; background: rgba(255,255,255,0.5); border-radius: 50%; transition: 0.3s; }
@@ -165,11 +89,7 @@
         .tab-btn.active { background: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255, 87, 51, 0.3); }
         
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 0 5%; }
-        .menu-card { 
-            background: rgba(255, 255, 255, 0.95); border-radius: 22px; padding: 12px; 
-            display: flex; flex-direction: column; box-shadow: var(--card-shadow); 
-            border: 1px solid rgba(255,255,255,0.4); transition: transform 0.2s;
-        }
+        .menu-card { background: rgba(255, 255, 255, 0.95); border-radius: 22px; padding: 12px; display: flex; flex-direction: column; box-shadow: var(--card-shadow); border: 1px solid rgba(255,255,255,0.4); transition: transform 0.2s; }
         .menu-card:active { transform: scale(0.97); }
         .img-box { width: 100%; height: 135px; border-radius: 16px; overflow: hidden; margin-bottom: 10px; cursor: zoom-in; position: relative; }
         .img-box img { width: 100%; height: 100%; object-fit: cover; }
@@ -258,45 +178,64 @@
     <div id="loading-text" style="text-align: center; padding: 40px; color: #888;"><b><i class="fas fa-spinner fa-spin"></i> Meracik Menu...</b></div>
     <div class="menu-grid" id="menu-list"></div>
 
-<section class="maps-card">
-    <div class="maps-header">
-        <i class="fas fa-location-dot"></i>
-        <span>Lokasi RM. Berkat</span>
-    </div>
-    <p style="font-size: 11px; color: #666; margin-bottom: 12px; line-height: 1.4;">
-        Jl. Raya Utama No. 88, Kota Anda (Samping Bank ABC)
-    </p>
-    <div class="maps-frame">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56347862248!2d107.57311640000001!3d-6.9034443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTQnMTIuNCJTIDEwN8KwMzQnMjMuMiJF!5e0!3m2!1sid!2sid!4v1625000000000!5m2!1sid!2sid" 
-            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>
-    </div>
-    <a href="https://maps.google.com" target="_blank" style="display: block; text-align: center; margin-top: 15px; font-size: 12px; color: var(--accent); font-weight: 700; text-decoration: none;">
-        <i class="fas fa-directions"></i> Petunjuk Arah ke Lokasi
-    </a>
-</section>
+    <section class="maps-card">
+        <div class="maps-header">
+            <i class="fas fa-location-dot"></i>
+            <span>Lokasi RM. Berkat</span>
+        </div>
+        <p style="font-size: 11px; color: #666; margin-bottom: 12px; line-height: 1.4;">
+            Jl. Raya Utama No. 88, Kota Anda (Samping Bank ABC)
+        </p>
+        <div class="maps-frame">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56347862248!2d107.57311640000001!3d-6.9034443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTQnMTIuNCJTIDEwN8KwMzQnMjMuMiJF!5e0!3m2!1sid!2sid!4v1625000000000!5m2!1sid!2sid" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+        <a href="https://maps.google.com" target="_blank" style="display: block; text-align: center; margin-top: 15px; font-size: 12px; color: var(--accent); font-weight: 700; text-decoration: none;">
+            <i class="fas fa-directions"></i> Petunjuk Arah ke Lokasi
+        </a>
+    </section>
 
-<footer>
-    <p style="font-style: italic; font-size: 12px; color: #222; margin-bottom: 15px; font-weight: 700;">
-        "Kebahagiaan sederhana dari suapan pertama."
-    </p>
-    
-    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-        <a href="#" class="social-link" style="background: linear-gradient(45deg, #f09433, #bc1888);"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-link" style="background: #1877F2;"><i class="fab fa-facebook-f"></i></a>
-    </div>
+    <footer>
+        <p style="font-style: italic; font-size: 12px; color: #222; margin-bottom: 15px; font-weight: 700;">
+            "Kebahagiaan sederhana dari suapan pertama."
+        </p>
+        
+        <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+            <a href="#" class="social-link" style="background: linear-gradient(45deg, #f09433, #bc1888);"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" style="background: #1877F2;"><i class="fab fa-facebook-f"></i></a>
+        </div>
 
-    <div class="disclaimer-container">
-        <i class="fas fa-clipboard-check"></i>
-        <p>•Kami menjamin kebersihan & kehalalan setiap sajian.</p>
-        <p>•Pastikan alamat pengiriman sesuai agar kurir tidak nyasar.</p>
-    </div>
+        <div class="disclaimer-container">
+            <i class="fas fa-clipboard-check"></i>
+            <p>•Kami menjamin kebersihan & kehalalan setiap sajian.</p>
+            <p>•Pastikan alamat pengiriman sesuai agar kurir tidak nyasar.</p>
+        </div>
 
-    <p style="margin-top: 20px; font-size: 10px; color: #555;">&copy; 2026 RM. Berkat.</p>
-</footer>
-   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+        <p style="margin-top: 20px; font-size: 10px; color: #555;">© 2026 RM. Berkat.</p>
+    </footer>
+
+    <div class="cart-bar" id="cart-bar">
+        <div id="discount-notice" class="discount-notice notice-off">Belanja Rp 100rb dapet diskon!</div>
+        <input type="text" id="order-note" class="note-input" placeholder="Tambahkan catatan (opsional)...">
+        
+        <select id="shipping-method" class="shipping-select" onchange="updateCartUI()">
+            <option value="0">Ambil Sendiri / Makan di Tempat (Rp 0)</option>
+            <option value="10000">Kirim Kurir Reguler (Rp 10.000)</option>
+        </select>
+
+        <div class="cart-footer">
+            <div>
+                <div style="font-size: 11px; color: #777;">Total (<span id="cart-count">0 Item</span>)</div>
+                <div id="cart-total" style="font-size: 16px; font-weight: 800; color: var(--primary);">Rp 0</div>
+            </div>
+            <button class="checkout-btn" onclick="checkoutWA()">
+                Pesan <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 <script>
     const CONFIG = {
         CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbLqSQeuUD-xQYsnKSXFW9ugrLXpemBzEQxeH5i65UdIweywO8CY0xEESs6bp4ZCJKO9v0KK3q4LWC/pub?output=csv", 
@@ -310,7 +249,7 @@
 
     const formatRp = (n) => "Rp " + (parseInt(n) || 0).toLocaleString('id-ID');
 
-    // FUNGSI AMBIL DATA (PENGGANTI SHEETDB)
+    // FUNGSI AMBIL DATA
     async function fetchData() {
         try {
             const response = await fetch(CONFIG.CSV_URL);
@@ -329,25 +268,23 @@
         } catch (e) { document.getElementById('loading-text').innerText = "Gagal memuat data!"; }
     }
 
-// Tambahkan ini di dalam fungsi filterMenu kamu
-function filterMenu(c, b) {
-    currentFilter = c;
-    document.getElementById('menuSearch').value = "";
-    document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
-    b.classList.add('active');
-    render(c);
-    
-    // Auto-scroll ke daftar menu agar pelanggan langsung melihat hasilnya
-    document.getElementById('menu-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
+    function filterMenu(c, b) {
+        currentFilter = c;
+        document.getElementById('menuSearch').value = "";
+        document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+        if(b) b.classList.add('active');
+        render(c);
+        
+        // Auto-scroll ke daftar menu agar pelanggan langsung melihat hasilnya
+        document.getElementById('menu-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
     function searchMenu() {
         const query = document.getElementById('menuSearch').value.toLowerCase();
         if (query.trim() !== "") {
             currentFilter = 'semua';
             document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
-            document.getElementById('btn-semua').classList.add('active');
+            // document.getElementById('btn-semua').classList.add('active'); // Dihapus karena btn-semua tidak ada di HTML
             render('semua', query);
         } else { filterMenu('promo', document.getElementById('btn-promo')); }
     }
@@ -395,23 +332,30 @@ function filterMenu(c, b) {
         updateCartUI(); render(currentFilter, document.getElementById('menuSearch').value.toLowerCase());
     }
 
-    function filterMenu(c, b) { currentFilter = c; document.getElementById('menuSearch').value = ""; document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active')); b.classList.add('active'); render(c); }
-
     function updateCartUI() {
         const ship = parseInt(document.getElementById('shipping-method').value) || 0;
         const subtotal = cart.reduce((s, i) => s + (i.price * i.qty), 0);
         const notice = document.getElementById('discount-notice');
         let totalFinal = subtotal + ship;
-        if (subtotal >= MIN_BELANJA_DISKON) { totalFinal -= NOMINAL_DISKON; notice.innerText = `🙌 Potongan Rp ${parseInt(NOMINAL_DISKON).toLocaleString()} Berhasil!`; notice.className = "discount-notice notice-on";
-        } else { notice.innerText = `Belanja Rp ${(MIN_BELANJA_DISKON/1000)}rb dapet diskon!`; notice.className = "discount-notice notice-off"; }
+        
+        if (subtotal >= MIN_BELANJA_DISKON) { 
+            totalFinal -= NOMINAL_DISKON; 
+            notice.innerText = `🙌 Potongan Rp ${parseInt(NOMINAL_DISKON).toLocaleString()} Berhasil!`; 
+            notice.className = "discount-notice notice-on";
+        } else { 
+            notice.innerText = `Belanja Rp ${(MIN_BELANJA_DISKON/1000)}rb dapet diskon!`; 
+            notice.className = "discount-notice notice-off"; 
+        }
+        
         document.getElementById('cart-bar').style.display = cart.length ? 'flex' : 'none';
         document.getElementById('cart-count').innerText = cart.reduce((s, i) => s + i.qty, 0) + " Item";
         document.getElementById('cart-total').innerText = formatRp(totalFinal);
     }
 
     function checkoutWA() {
-        const shipVal = parseInt(document.getElementById('shipping-method').value) || 0;
-        const shipText = document.getElementById('shipping-method').options[document.getElementById('shipping-method').selectedIndex].text;
+        const shipSelect = document.getElementById('shipping-method');
+        const shipVal = parseInt(shipSelect.value) || 0;
+        const shipText = shipSelect.options[shipSelect.selectedIndex].text;
         const subtotal = cart.reduce((s, i) => s + (i.price * i.qty), 0);
         const userNote = document.getElementById('order-note').value.trim(); 
         let diskonText = subtotal >= MIN_BELANJA_DISKON ? `\n🎁 Diskon: -${formatRp(NOMINAL_DISKON)}` : "";
@@ -448,8 +392,9 @@ function filterMenu(c, b) {
 
     function zoomImg(s) { document.getElementById('lightbox-img').src = s; document.getElementById('lightbox').classList.add('active'); }
     setInterval(() => { document.getElementById('real-datetime').innerText = new Date().toLocaleString('id-ID'); }, 1000);
+    
+    // Inisiasi pengambilan data
     fetchData();
 </script>
 </body>
 </html>
-
